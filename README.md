@@ -4,19 +4,22 @@ Device configuration for Sony Xperia XZ1 Compact (lilac)
 Description
 -----------
 
-This repository is for LineageOS 15.1 on Sony Xperia XZ1 Compact (lilac).
+This repository is for CarbonROM on Sony Xperia XZ1 Compact (lilac).
 
-How to build LineageOS
+How to build CarbonROM
 ----------------------
 
 * Make a workspace:
 
-        mkdir -p ~/lineageos/repo
-        cd ~/lineageos/repo
+        mkdir -p ~/bin && mkdir -p ~/CarbonROM
+
+* Install repo:
+
+        curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
 
 * Initialize the repo:
 
-        repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
+        cd ~/CarbonROM && repo init -u https://github.com/CarbonROM/android.git -b cr-6.1 && repo sync -f
 
 * Create a local manifest:
 
@@ -25,16 +28,16 @@ How to build LineageOS
         <?xml version="1.0" encoding="UTF-8"?>
         <manifest>
             <!-- SONY -->
-            <project name="cryptomilk/android_kernel_sony_msm8998" path="kernel/sony/msm8998" remote="github" />
-            <project name="cryptomilk/android_device_sony_common-treble" path="device/sony/common-treble" remote="github" />
-            <project name="cryptomilk/android_device_sony_yoshino" path="device/sony/yoshino" remote="github" />
-            <project name="cryptomilk/android_device_sony_lilac" path="device/sony/lilac" remote="github" />
+            <project name="CarbonROM/android_kernel_sony_msm8998" path="kernel/sony/msm8998" remote="github" />
+            <project name="CarbonROM/android_device_sony_common-treble" path="device/sony/common-treble" remote="github" />
+            <project name="CarbonROM/android_device_sony_yoshino-common" path="device/sony/yoshino-common" remote="github" />
+            <project name="InvalidSudo/android_device_sony_lilac" path="device/sony/lilac" remote="github" />
 
             <!-- Pinned blobs for lilac -->
             <project name="cryptomilk/android_vendor_sony_lilac" path="vendor/sony/lilac" remote="github" />
         </manifest>
 
-* Sync the repo:
+* Sync the repo (again):
 
         repo sync
 
@@ -46,8 +49,8 @@ How to build LineageOS
 * Setup the environment
 
         source build/envsetup.sh
-        lunch lineage_lilac-userdebug
+        lunch carbon_lilac-userdebug
 
-* Build LineageOS
+* Build CarbonROM
 
-        make -j8 bacon
+        make carbon -j8
