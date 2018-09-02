@@ -29,4 +29,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT:=Sony/lilac/lilac:8.0.0/OPR6.170623.013/1:user/dev-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carbon.maintainer="InvalidSudo"
+    ro.carbon.maintainer="invalidsudo"
